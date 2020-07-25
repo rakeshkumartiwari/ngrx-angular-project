@@ -1,0 +1,130 @@
+<div class="view-container">
+    <div class="section">
+        <div class="inner-header-section">
+            <div class="ibo-row">
+                <div class="dskt-6 tblt-8 smtp-4">
+                    <h2>{{'Selected component details'}}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-section-hr">
+            <div class="hr"></div>
+            <div class="hr-gradient"></div>
+        </div>
+
+        <div class="inner-section">
+            <form [formGroup]="uploadForm">
+                <div class="ibo-row">
+                    <div class="dskt-12 tblt-8 smtp-8">
+                        <div class="body-context">
+                            <span>{{uploadGridData?.courseDetails}}</span>
+                        </div>
+                    </div>
+                    <div class="dskt-12 tblt-8 smtp-8">
+                        <div class="subHeading-context">
+                            <span>Are you uploading a music package?</span>
+                        </div>
+                        <div class="radio-text">
+                            <div class="form-check-inline">
+                                <input type="radio" id="yes" class="form-check-input" value="Yes" name="viewBy"
+                                    formControlName="viewBy" (change)="handleChange($event)" />
+                                <label class="radio-label" for="yes">{{'Yes' }}</label>
+                            </div>
+                            <div class="form-check-inline">
+                                <input type="radio" id="no" class="form-check-input" value="No" name="viewBy"
+                                    formControlName="viewBy" (change)="handleChange($event)" />
+                                <label class="radio-label" for="no">{{'No' }}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="upload-container">
+                    <div class="ibo-row">
+                        <div class="dskt-6 tblt-8 smtp-4">
+                            <h2>{{'Upload materials'}}</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inner-section-hr">
+                    <div class="hr"></div>
+                    <div class="hr-gradient"></div>
+                </div>
+
+                <div *ngIf="uploadForm.value.viewBy === packageType.no" class="dskt-12 tblt-12 smtp-12">
+                    <lib-new-style-drag-attachment
+                        (fileAdded)="onFileAdded($event)"
+                        (fileDownload)="onFileDownload($event)"
+                        (cancelUploadFile)="cancelUpload($event)"
+                        (uploadedFileRemoved)="onUploadedFileRemoved($event)"
+                        [singleMaxFileSize]="fileUploadInputsNonMusic.singleMaxFileSize"
+                        [maxSize]="fileUploadInputsNonMusic.maxSize"
+                        [limit]="fileUploadInputsNonMusic.limit"
+                        [fileScanStatus]="fileScanStatus"
+                        [allowedMimeType]="fileUploadInputsNonMusic.allowedMimeType"
+                        [allowedFileType]="fileUploadInputsNonMusic.allowedFileType"
+                        [uploadedFiles]="attachments"
+                        [UploadProgress]="fileUploadProgress"
+                        [translatedPageContent]="translatedPageContent"
+                        [viewDetail]="false">
+                    </lib-new-style-drag-attachment>
+                </div>
+
+                <div *ngIf="uploadForm.value.viewBy === packageType.yes">
+                    <div>Mac Version</div>
+                    <div class="dskt-12 tblt-12 smtp-12">
+                        <lib-new-style-drag-attachment
+                            (fileAdded)="onFileAdded($event)"
+                            (fileDownload)="onFileDownload($event)"
+                            (cancelUploadFile)="cancelUpload($event)"
+                            (uploadedFileRemoved)="onUploadedFileRemoved($event)"
+                            [singleMaxFileSize]="fileUploadInputsMusicMac.singleMaxFileSize"
+                            [maxSize]="fileUploadInputsMusicMac.maxSize"
+                            [limit]="fileUploadInputsMusicMac.limit"
+                            [fileScanStatus]="fileScanStatus"
+                            [allowedMimeType]="fileUploadInputsMusicMac.allowedMimeType"
+                            [allowedFileType]="fileUploadInputsMusicMac.allowedFileType"
+                            [uploadedFiles]="attachments"
+                            [UploadProgress]="fileUploadProgress"
+                            [translatedPageContent]="translatedPageContent"
+                            [viewDetail]="false">
+                        </lib-new-style-drag-attachment>
+                    </div>
+    
+                    <div class="dskt-12 tblt-12 smtp-12">
+                    <div>Windows Version</div>
+
+                        <lib-new-style-drag-attachment
+                            (fileAdded)="onFileAdded($event)"
+                            (fileDownload)="onFileDownload($event)"
+                            (cancelUploadFile)="cancelUpload($event)"
+                            (uploadedFileRemoved)="onUploadedFileRemoved($event)"
+                            [singleMaxFileSize]="fileUploadInputsMusicWindows.singleMaxFileSize"
+                            [maxSize]="fileUploadInputsMusicWindows.maxSize"
+                            [limit]="fileUploadInputsMusicWindows.limit"
+                            [fileScanStatus]="fileScanStatus"
+                            [allowedMimeType]="fileUploadInputsMusicWindows.allowedMimeType"
+                            [allowedFileType]="fileUploadInputsMusicWindows.allowedFileType"
+                            [uploadedFiles]="attachments"
+                            [UploadProgress]="fileUploadProgress"
+                            [translatedPageContent]="translatedPageContent"
+                            [viewDetail]="false">
+                        </lib-new-style-drag-attachment>
+                    </div>
+    
+
+                </div>
+                
+            </form>
+
+        </div>
+    </div>
+
+    <div class="btn-container">
+        <button class="btn-gap" [iboButton]="'Secondary'" (click)="onCancel()">Cancel</button>
+        <button [iboButton]="'Primary'" [ngClass]="assignButtonStyle" (click)="onSubmit()">Submit</button>
+    </div>
+
+</div>

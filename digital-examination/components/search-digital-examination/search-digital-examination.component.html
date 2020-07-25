@@ -1,0 +1,150 @@
+<div class="section">
+    <form [formGroup]="digitalExaminationForm">
+        <div class="inner-header-section">
+            <div class="ibo-row">
+                <div class="dskt-6 tblt-8 smtp-4">
+                    <h2>Search</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-section-hr">
+            <div class="hr"></div>
+            <div class="hr-gradient"></div>
+        </div>
+
+        <div class="inner-section">
+            <div class="ibo-row">
+                <div class="dskt-4 tblt-8 smtp-4">
+                    <div class="form-element">
+                        <label for="group" class="search-form-label">Group<sup>*</sup></label>
+
+                        <ibo-shared-lib-combobox [placeholder]="'Select'" formControlName="group"
+                            [settings]="dropdownSettingsGroup" [data]="groupData" (onChange)="onGroupSelect($event)"
+                            (SelectAll)="onGroupSelect($event)" (DeSelectAll)="onGroupSelect($event)">
+                        </ibo-shared-lib-combobox>
+                    </div>
+                </div>
+                <div class="dskt-4 tblt-8 smtp-4 subgroup">
+                    <div class="form-element">
+                        <label for="subgroup" class="search-form-label">Sub group</label>
+
+                        <ibo-shared-lib-combobox [placeholder]="'Select'" formControlName="subgroup"
+                            [settings]="dropdownSettingsSubgroup" [data]="subgroupData"
+                            (onChange)="onSubgroupSelect($event)" (SelectAll)="onSubgroupSelect($event)"
+                            (DeSelectAll)="onSubgroupSelect($event)">
+                        </ibo-shared-lib-combobox>
+                    </div>
+                </div>
+            </div>
+            <div class="ibo-row">
+                <div class="dskt-4 tblt-8 smtp-4">
+                    <div class="form-element">
+                        <label for="subject" class="search-form-label">Subject</label>
+
+                        <ibo-shared-lib-combobox [placeholder]="'Select'" formControlName="subject"
+                            [settings]="dropdownSettingsSubject" [data]="subjectData"
+                            (onChange)="onSubjectSelect($event)" (SelectAll)="onSubjectSelect($event)"
+                            (DeSelectAll)="onSubjectSelect($event)">
+                        </ibo-shared-lib-combobox>
+                    </div>
+                </div>
+                <div class="dskt-4 tblt-8 smtp-4">
+                    <div class="form-element">
+                        <label for="level" class="search-form-label">Level</label>
+
+                        <ibo-shared-lib-combobox [placeholder]="'Select'" formControlName="level"
+                            [settings]="dropdownSettingsLevel" [data]="levelData" (onChange)="onLevelSelect($event)"
+                            (SelectAll)="onLevelSelect($event)" (DeSelectAll)="onLevelSelect($event)">
+                        </ibo-shared-lib-combobox>
+                    </div>
+                </div>
+
+            </div>
+            <div class="ibo-row">
+                <div class="dskt-4 tblt-8 smtp-4">
+                    <div class="form-element">
+                        <label for="option" class="search-form-label">Option</label>
+
+                        <ibo-shared-lib-combobox [placeholder]="'Select'" formControlName="option"
+                            [settings]="dropdownSettingsOption" [data]="optionData" (onChange)="onOptionSelect($event)"
+                            (SelectAll)="onOptionSelect($event)" (DeSelectAll)="onOptionSelect($event)">
+                        </ibo-shared-lib-combobox>
+                    </div>
+                </div>
+                <div class=" dskt-4 tblt-8 smtp-4">
+                    <div class="form-element">
+                        <label for="component" class="search-form-label">Component</label>
+
+                        <ibo-shared-lib-combobox [placeholder]="'Select'" formControlName="component"
+                            [settings]="dropdownSettingsComponent" [data]="componentData"
+                            (onChange)="onComponentSelect($event)" (SelectAll)="onComponentSelect($event)"
+                            (DeSelectAll)="onComponentSelect($event)">
+                        </ibo-shared-lib-combobox>
+                    </div>
+                </div>
+            </div>
+            <div class=" ibo-row">
+                <div class="dskt-4 tblt-8 smtp-4">
+                    <div class="form-element">
+                        <label for="language" class="search-form-label">Language</label>
+
+                        <ibo-shared-lib-combobox [placeholder]="'Select'" formControlName="language"
+                            [settings]="dropdownSettingsLanguage" [data]="languageData">
+                        </ibo-shared-lib-combobox>
+                    </div>
+                </div>
+            </div>
+            <div class=" ibo-row" *ngIf="!isSchoolUser">
+                <div class="dskt-4 tblt-8 smtp-4">
+                    <div class="form-element">
+                        <label for="radioBtn" class="search-form-label">Uploaded
+                            documents</label>
+                        <div class="input-field">
+                            <div class="column" role="radiogroup">
+                                <span class="radio-container">
+                                    <input type="radio" class="radio-btn" role="radio" (change)="onRadioButtonChange()"
+                                        formControlName="documentsAvailability" id="all" name="documentsAvailability"
+                                        value="all">
+                                    <label for="all" class="lblradio">All</label>
+                                </span>
+                                <span class="radio-container">
+                                    <input type="radio" class="radio-btn" role="radio" (change)="onRadioButtonChange()"
+                                        formControlName="documentsAvailability" id="available"
+                                        name="documentsAvailability" value="available">
+                                    <label for="available" class="lblradio">Available</label>
+                                </span>
+                                <span class="radio-container">
+                                    <input type="radio" class="radio-btn" role="radio" (change)="onRadioButtonChange()"
+                                        formControlName="documentsAvailability" id="notAvailable"
+                                        name="documentsAvailability" value="notAvailable">
+                                    <label for="notAvailable" class="lblradio">Not
+                                        available</label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ibo-row btn-Cntr">
+                <div class="dskt-1 tblt-1 smtp-1">
+                    <button class="clearFormBtn" data-testid="clearFormBtn" (click)="clearForm()">Clear</button>
+                </div>
+                <div class="dskt-1 tblt-1 smtp-1">
+                    <button class="searchCourseBtn" data-testid="searchCourseBtn" [ngClass]="disableSaveButton()"
+                        (click)="onSearch()">Search
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <div class="inner-header-section">
+            <div class="ibo-row">
+                <div class="dskt-6 tblt-8 smtp-4">
+                    <h2>Search results</h2>
+                    <p>{{griDataCount}} results found based on search criteria</p>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

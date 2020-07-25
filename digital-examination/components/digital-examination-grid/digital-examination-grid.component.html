@@ -1,0 +1,96 @@
+<ibo-shared-lib-ibo-table [tableConfig]="tableConfig" [allData]="backupData" [apiResponse]="digitalExaminationGridData"
+    (filterByColumn)="filterByColumn($event)" (toggleFilterMenu)="toggleFilterMenu($event)"
+    [sourceDataCount]="totalRecords" [pageDetail]="pageDetail" (setCurrentPage)="setCurrentPage($event)"
+    (filter)="filterFromPop($event)" (snapShotData)="navigateToAction($event)" (ExportClick)="selectedRows($event)"
+    [exportData]="true">
+</ibo-shared-lib-ibo-table>
+
+<!-- Action Button -->
+<ng-template #actionButtonTemplate let-col="column" let-data="rowData">
+    <td>
+        <!-- we can use data for column data -->
+
+        <!-- IBO user -->
+        <ng-container >
+            <ng-container *ngIf="!data.isUploadAllowed && !isSchoolUser">
+                <button aria-label="View" type="button" tabindex="0" class="view" [iboToolTip]="{info : 'View'}"
+                    (click)="navigateToView(data)">
+                </button>
+                <button aria-label="Download" type="button" tabindex="0" class="download"
+                    [iboToolTip]="{info : 'Download'}" (click)="openModal(data)">
+                </button>
+                <button aria-label="Edit" type="button" tabindex="0" data-testid="edit-button" class="edit-item"
+                    [iboToolTip]="{info : 'Edit', class: 'tool-tip-edit-course-attr'}">
+                </button>
+
+                <!-- show view password only for non music package  -->
+                <ng-container *ngIf="data.files && data.files.length && !data.files[0].isMusicPackage">
+                    <button aria-label="View Password" type="button" tabindex="0" class="view-password"
+                        [iboToolTip]="{info : 'View Password'}" (click)="viewPassword(data)">
+                    </button>
+                </ng-container>
+
+            </ng-container>
+
+            <ng-container *ngIf="data.isUploadAllowed && !isSchoolUser">
+                <button aria-label="Upload" type="button" tabindex="0" class="upload" id="uploadBtn"
+                    [iboToolTip]="{info : 'Upload'}" (click)="navigateToUpload(data)">
+                </button>
+            </ng-container>
+        </ng-container>
+        <!-- School Users -->
+        <ng-container *ngIf="isSchoolUser">
+            <ng-container *ngIf="!data.isUploadAllowed">
+                <button aria-label="Download" type="button" tabindex="0" class="download"
+                    [iboToolTip]="{info : 'Download'}" (click)="openModal(data)">
+                </button>
+            </ng-container>
+
+            <!-- show view password only for non music package  -->
+            <ng-container *ngIf="data.files && data.files.length && !data.files[0].isMusicPackage">
+                <button aria-label="View Password" type="button" tabindex="0" class="view-password"
+                    [iboToolTip]="{info : 'View Password'}" (click)="viewPassword(data)">
+                </button>
+            </ng-container>
+
+        </ng-container>
+
+    </td>
+</ng-template>
+
+<ibo-custom-modal [showModal]="showModal" title="Download digital examination materials" (modalClosed)="hideModal()"
+    class="modalComponent" [title]="title">
+    <div class="select-package-container">
+        <p>Select the package</p>
+        <label class="checkbox-inline">
+            <input type="checkbox" class="ibo-checkbox" value="Windows" [(ngModel)]="isWindows" />
+            Windows
+        </label>
+        <label class="checkbox-inline">
+            <input type="checkbox" class="ibo-checkbox" value="Mac" [(ngModel)]="isMac" />
+            Mac
+        </label>
+
+        <hr />
+
+        <div class="btn-container">
+            <button class="cancelBtn" (click)="hideModal()" [iboButton]="'Secondary'">Cancel</button>
+            <button class="dounload-button" [ngClass]="disableDownloadButton()" (click)="onDownload()">Download
+            </button>
+        </div>
+    </div>
+</ibo-custom-modal>
+
+<ibo-custom-modal [showModal]="showViewPasswordModal" title="View Password" (modalClosed)="hideViewPasswordModal()"
+    class="modalComponent" [title]="viewPasswordTitle">
+    <div class="viewpassword-container">
+        <label>
+            <input type="text" class="viewpassword-box" [(ngModel)]="setPasswordValue" readonly />
+        </label>
+        <hr />
+
+        <div class="btn-container">
+            <button class="close-button" (click)="hideViewPasswordModal()">Close</button>
+        </div>
+    </div>
+</ibo-custom-modal>

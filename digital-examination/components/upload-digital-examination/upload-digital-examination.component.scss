@@ -1,0 +1,144 @@
+.page-title-outside {
+    font-size: 3rem;
+    color: #4269ae;
+    padding-left: 0 !important;
+  }
+
+.view-container {
+  .btn-container {
+    margin-top: 3% !important;
+    .assignStyle {
+      background-color: #b9bbbd !important;
+      border: 1px solid #b9bbbd !important;
+      cursor: not-allowed !important;
+  }
+  
+  .searchCourseBtn .disabled {
+      background-color: #b9bbbd !important;
+      border: 1px solid #b9bbbd !important;
+      font-size: 13.33px;
+  }
+  
+  .searchBtn {
+      width: 102px;
+      height: 40px;
+      background: #4a74bb 0% 0% no-repeat padding-box;
+      border: 1px solid #4a74bb;
+      border-radius: 20px;
+      color: #fff;
+      opacity: 1;
+  }
+  
+  
+    .btn-gap {
+      margin-right: 1% !important;
+    }
+  }
+    .section {
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 9px;
+        box-shadow: 0 2px 6px 0 #c4c8d0;
+        font-size: 1.5rem;
+        padding: 10px 0 0 0;
+        overflow: auto;
+        .inner-header-section {
+            padding: 0px 20px 0px 20px;
+            h2 {
+                font-size: 2.2rem;
+                font-weight: bold;
+                color: #333333;
+                margin-bottom: 0.6rem;
+            }
+        }
+        .inner-section-hr {
+            .hr {
+                height: 1px;
+                background: #dedede 0% 0% no-repeat padding-box;
+            }
+            .hr-gradient {
+                height: 4px;
+                background: transparent linear-gradient(180deg, #f2f2f2 0%, #ffffff 100%) 0% 0% no-repeat padding-box;
+                margin-bottom: 5px;
+            }
+        }
+        .inner-section {
+            padding: 0px 20px 20px 20px;
+            // .form-element {
+                display: grid;
+                div .body-context{
+                    font-size: 1.5rem;
+                    color: #333333;
+                    font-weight: lighter;
+                    margin-top: 10px;
+                  }
+                  .subHeading-context {
+                    font-size: 1.4rem;
+                    color: #333333;
+                    font-weight: bold;
+                    margin-top: 10px;
+                  }
+
+                  .radio-text {
+                    display: flex;
+                    font-size: 1.5rem;
+                    .form-check-inline {
+                        input {
+                          margin-right: 1rem;
+                          width: 1.2rem;
+                        }
+                
+                        label {
+                          margin-right: 1rem;
+                        }
+                      }
+                  }
+                  .upload-container {
+                    h2 {
+                      font-size: 2.2rem;
+                      font-weight: bold;
+                      color: #333333;
+                      margin-bottom: 0.6rem;
+                  }
+                  }
+                  .inner-section-hr {
+                    .hr {
+                        height: 1px;
+                        background: #dedede 0% 0% no-repeat padding-box;
+                    }
+                    .hr-gradient {
+                        height: 4px;
+                        background: transparent linear-gradient(180deg, #f2f2f2 0%, #ffffff 100%) 0% 0% no-repeat padding-box;
+                        margin-bottom: 5px;
+                    }
+                }
+                  
+               
+        }
+    }
+    
+    div .btn-exit {
+        margin-top: 3.1rem;
+        width: 9.8rem;
+        height: 4rem;
+        background: #4a74bb 0% 0% no-repeat padding-box;
+        border: 0.1rem solid #4a74bb;
+        border-radius: 2rem;
+        opacity: 1;
+        text-align: center;
+        letter-spacing: 0;
+        color: #fff;
+      }
+    
+      .btn-exit:hover {
+        background: #004b8c;
+      }
+
+      .dropSec .my-drop-zone .qual-attachment {
+        background: url("/assets/images/file-empty.svg") center center no-repeat !important;
+      }
+      .dropSec .my-drop-zone .upload-file-image {
+        background: url("https://iboanedevaospdui01-as.azurewebsites.net/assets/images/upload.svg") center no-repeat,#fdfcfc !important;
+      }
+    
+    }

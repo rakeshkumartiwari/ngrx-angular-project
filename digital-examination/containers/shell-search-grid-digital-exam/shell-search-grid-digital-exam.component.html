@@ -1,0 +1,34 @@
+<app-search-digital-examination
+[compDigitalExaminationGridData]="shellDigitalExamGridData"
+[groupData] = "groupData$ | async"
+[subgroupData]="subgroupData"
+[subjectData]="subjectData$ | async"
+[levelData]="levelData$ | async"
+[optionData]="optionData$ | async"
+[componentData]="componentData$ | async"
+[languageData]="languageData$ | async"
+[isSchoolUser] = "isSchoolUser"
+
+
+(groupItemsIds)="getGroupItemsIds($event)"
+(subgroupItemsIds)="getSubgroupItemsIds($event)"
+(subjectIds)="getSubjectIds($event)"
+(levelIds)="getLevelIds($event)"
+(optionIds)="getOptionIds($event)"
+(componentIds)="getcomponentIds($event)"
+(digitalExamination)="getDigitalExaminationForm($event)"
+(DocumentsAvailabilityStatus)="getDocumentsAvailabilityStatus($event)">
+</app-search-digital-examination>
+
+<app-digital-examination-grid
+[compDigitalExaminationGridData]="shellDigitalExamGridData"
+[totalRecords]="totalRecords"
+[isSchoolUser] = "isSchoolUser"
+[documentStatus] = "documentStatus"
+
+(pageNumber)="setPageNumber($event)"
+(emitViewData)="navigateToViewPage($event)"
+(emitFieldIdData)="getPasswordToView($event)"
+(emitFiles) = "getFiles($event)"
+(emitUploadData)="navigateToUploadPage($event)">
+</app-digital-examination-grid>

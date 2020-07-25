@@ -1,0 +1,81 @@
+<div class="view-container">
+    <div class="section">
+        <div class="inner-header-section">
+            <div class="ibo-row">
+                <div class="dskt-6 tblt-8 smtp-4">
+                    <h2>Selected component details</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-section-hr">
+            <div class="hr"></div>
+            <div class="hr-gradient"></div>
+        </div>
+
+        <div class="inner-section">
+            <div>
+                <div class="ibo-row">
+                    <div class="dskt-12 tblt-8 smtp-8">
+                        <div class="body-context">
+                            <span>{{courseDetail}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="document-head">
+                    <div class="ibo-row">
+                        <div class="dskt-6 tblt-8 smtp-4">
+                            <h2>Documents</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inner-section-hr">
+                    <div class="hr"></div>
+                    <div class="hr-gradient"></div>
+                </div>
+
+                <div class="dskt-12 tblt-12 smtp-12">
+                    <div class="version-container" *ngIf="isMacVersion">
+                        <p>Mac version</p>
+                        <lib-new-style-drag-attachment
+                            [singleMaxFileSize]="fileUploadInputs.singleMaxFileSize"
+                            [maxSize]="fileUploadInputs.maxSize"
+                            [limit]="fileUploadInputs.limit"
+                            [fileScanStatus]="fileScanStatus"
+                            [allowedMimeType]="fileUploadInputs.allowedMimeType"
+                            [allowedFileType]="fileUploadInputs.allowedFileType"
+                            [uploadedFiles]="macAttachments"
+                            [translatedPageContent]="translatedPageContent"
+                            [UploadProgress]="fileUploadProgress"
+                            [viewDetail]="true">
+                        </lib-new-style-drag-attachment>
+                    </div>
+                    <div class="version-container" *ngIf="isWindowsVersion">
+                        <p>Windows version</p>
+                        <lib-new-style-drag-attachment
+                            [singleMaxFileSize]="fileUploadInputs.singleMaxFileSize"
+                            [maxSize]="fileUploadInputs.maxSize"
+                            [limit]="fileUploadInputs.limit"
+                            [fileScanStatus]="fileScanStatus"
+                            [allowedMimeType]="fileUploadInputs.allowedMimeType"
+                            [allowedFileType]="fileUploadInputs.allowedFileType"
+                            [uploadedFiles]="windowsAttachments"
+                            [translatedPageContent]="translatedPageContent"
+                            [UploadProgress]="fileUploadProgress"
+                            [viewDetail]="true">
+                        </lib-new-style-drag-attachment>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div>
+        <button class="btn-exit" (click)="goBack()">Back</button>
+    </div>
+
+</div>
